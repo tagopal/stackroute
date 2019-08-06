@@ -1,0 +1,23 @@
+<div class="list_view_container">
+    <!-- Populate notStartedNotes -->
+    <div class="keep-c-list-container">
+        <label>Not-Started</label>
+        <mat-list *ngFor="let note of notStartedNotes">
+                <app-note [note] = "note" ></app-note>
+        </mat-list>
+    </div>
+    <!-- Populate startedNotes -->
+    <div class="keep-c-list-container">
+        <label>Started</label>
+        <mat-list *ngFor="let note of startedNotes">
+                <app-note [note] = "note"></app-note>
+        </mat-list>
+    </div>
+    <!-- Populate completedNotes -->
+    <div class="keep-c-list-container">
+        <label>Completed</label>
+        <mat-list *ngFor="let note of completedNotes">
+                <app-note [note] = "note"></app-note>
+        </mat-list>
+    </div>
+</div>

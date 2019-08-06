@@ -1,0 +1,124 @@
+.keep-c-toggle-view {
+	cursor: pointer;
+}
+
+.header_container{
+    display: flex;
+    justify-content: space-between;
+    background: #e8d846;
+}
+
+.overlay_container{
+    height: 64px;
+    width: 100%;
+    background: grey;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.overlay_enable{
+    opacity: 1;
+}
+
+.left_section{
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.right_section{
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.close_icon{
+    padding: 15px;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.more_options{
+    padding: 15px;
+    cursor: pointer;
+}
+
+.subMenu{
+    position: absolute;
+    right: 0;
+    top: 60px;
+    right: 15px;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.mat-menu-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.add_new_label{
+    display: flex;
+    align-items: center;
+}
+
+.header_search_container{
+    height: 65px;
+    width: 70%;
+}
+
+.header_search{
+    width: 100%;
+}
+
+.search_icon{
+    cursor: pointer;
+}
+
+.favorite_icon{
+    color: rgb(0, 0, 0);
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.fav_enable{
+    color: red;
+}
+
+.fav_disable{
+    color: white;
+}
+
+.delete_icon{
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.delete_icon:hover{
+    color: white;
+}
+
+.sign_out_button{
+    cursor: pointer;
+}
+
+.header_whole_container{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.placeholder{
+    height: 64px;
+}
+
+.material-icons{
+    margin: 0px 5px;
+}

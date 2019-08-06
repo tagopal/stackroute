@@ -1,0 +1,26 @@
+<div class="login-container" [ngClass]="{login_enable:!registerActive}">
+    <mat-form-field>
+      <input  class="username" matInput placeholder="Enter your User Name" [formControl]="username" required>
+      <mat-error *ngIf="username.invalid">{{getUserNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input class="password"  type = 'password' matInput placeholder="Enter your Password" [formControl]="password" required>
+        <mat-error *ngIf="username.invalid">{{getPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-button (click)='loginSubmit()'>Login</button>
+      <strong *ngIf="submitMessage" class="error-message">{{submitMessage}}</strong>
+      <button mat-button class="register_button" (click)="registerView()">New User? Register</button>
+</div>
+
+<div class="register_container" [ngClass]="{register_enable:registerActive}">
+        <mat-form-field>
+            <input  class="username" matInput placeholder="Enter your User Name" [formControl]="username" required>
+            <mat-error *ngIf="username.invalid">{{getUserNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input class="password"  type = 'password' matInput placeholder="Enter your Password" [formControl]="password" required>
+            <mat-error *ngIf="username.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <button mat-button class="register_button" (click)="register()">Register</button>
+        <button mat-button class="back_button" (click)="registerView()">Back</button>
+</div>

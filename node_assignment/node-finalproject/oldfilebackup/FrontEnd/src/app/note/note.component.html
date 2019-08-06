@@ -1,0 +1,52 @@
+<div class="keep-note-card">
+  <mat-card  class="note_card">
+    <div (click)="openDialog()">
+        <mat-card-title >{{note.title}}</mat-card-title>
+        <mat-card-content>{{note.text}}</mat-card-content>
+    </div>
+    <div class="label_list_container">
+        <div class="label_container" *ngFor="let item of note.labels">
+            <div class="label_text" (click)="labelSelect(item)">{{item}}</div>
+            <i class="material-icons close_icon" (click)="deleteLabel(item)">close</i>
+        </div>
+    </div>
+    <div class="note_options">
+        <i class="material-icons favorite_icon" [ngClass]="{fav_enable:favorite, fav_disable:favDisable}" (click)="favoriteToggle()">
+            favorite
+        </i>
+        <i class="material-icons share_icon" [matMenuTriggerFor]="appMenu">
+                share
+        </i>
+        <!-- <mat-form-field>
+            <input matInput placeholder="Pick date time:"
+                [(ngModel)]="dateTime"
+                [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+            <mat-icon matSuffix [owlDateTimeTrigger]="dt">access_time</mat-icon> 
+        </mat-form-field>
+        <owl-date-time #dt></owl-date-time>    -->
+        <mat-menu class="labelMenu" #appMenu="matMenu" (click)="$event.stopPropagation()">
+            <mat-form-field appearance="legacy" (click)="$event.stopPropagation()">
+                <mat-label>User Search</mat-label>
+                <input matInput placeholder="" [formControl]="myControl">
+                <mat-icon matSuffix>search</mat-icon>
+                <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+            <!-- <mat-checkbox id="label_check+{{i}}" [indeterminate]="indeterminate[i]" class="mat-menu-item" (change)="checkBoxChange($event,i,item.name)" [(ngModel)]="shareUserList[i]" *ngFor="let item of filteredOptions | async; index as i" (click)="$event.stopPropagation()">{{item}}</mat-checkbox>
+            <div class="mat-menu-item" *ngIf="(filteredOptions | async)?.length==0&&myControl.value!=''" (click)="addNewUser()">
+                <div class="add_new_label">
+                    <i class="material-icons">add</i>
+                    <div>{{myControl.value}}</div>
+                </div>
+            </div> -->
+            <div class="mat-menu-item"  (click)="shareNote()">
+                <!-- *ngIf="(filteredOptions | async)?.length>0" -->
+                Share
+            </div>
+        </mat-menu>
+    </div>
+  </mat-card>
+  <i class="material-icons select_button" [ngClass]="{selected:selected}" (click)="selectToggle()">
+        done
+    </i>
+  <!-- <img class="select_button" [ngClass]="{selected:selected}" src="../../assets/images/check.svg" (click)="selectToggle()"> -->
+</div>

@@ -1,0 +1,23 @@
+<div class="note_edit_container" *ngIf="note">
+    <div class="noted_edit_background" (click)="close()">
+        
+    </div>
+    <div class="note_edit_card" (click)="clicked()">
+        <mat-form-field> 
+            <input name="editTitle" matInput placeholder="note.title" type="text">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea name="editText" matInput placeholder="note.text"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select name="editStatus" placeholder="Select state" [(ngModel)]="note.state">
+                <mat-option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="keep-c-done-wrapper">
+            <button mat-button (click)="onSave()">Save</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<label class="error-message">{{ errMessage }}</label>
+
+<mat-form-field> 
+    <input [(ngModel)]="title" [value]="note.title" name="editTitle" matInput placeholder="Title" type="text">
+</mat-form-field>
+<mat-form-field>
+    <textarea [(ngModel)]="text" [value]="note.text" name="editText" matInput placeholder="Text"></textarea>
+</mat-form-field>
+<mat-form-field>
+    <mat-select name="editStatus" placeholder="Select state" [value]="note.state" [(ngModel)]="state">
+        <mat-option *ngFor="let state of states" [value]="state">
+            {{ state }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<!-- {{data | json}} -->
+<div class="keep-c-done-wrapper">
+    <button mat-button mat-dialog-close mat-dialog-close="true" (click)="onSave()">Save</button>
+</div>

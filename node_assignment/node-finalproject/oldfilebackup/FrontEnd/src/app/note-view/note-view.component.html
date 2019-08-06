@@ -1,0 +1,15 @@
+<div class="keep-c-note-container" *ngIf="notes">
+    <mat-list *ngFor="let note of notes">
+    <app-note [note]="note" ></app-note>
+    </mat-list>
+    <!-- Include the notes collection with each note rendered as a separate NoteComponent -->
+    <!--<mat-card>
+    <mat-card-title >title</mat-card-title>
+<mat-card-content>text</mat-card-content> 
+</mat-card>-->
+
+</div>
+<div *ngIf="!notes.length">No matching results</div>
+<div>
+    <app-note-edit-view></app-note-edit-view>
+</div>
