@@ -1,0 +1,21 @@
+<div class="keep-comp-expansion-panel">
+  <mat-expansion-panel [expanded]="expansionToggle" >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Take a note
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="forms-group">
+      <mat-form-field>
+        <input class="title" [formControl]="title" matInput placeholder="title" name="title">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea class="text" [formControl]="text" matInput placeholder="text" name="text"></textarea>
+      </mat-form-field>
+        <mat-card-actions>
+           <mat-icon matTooltip="favourite" (click)="_favourite()" [ngStyle]="fav_value==true?{'color':'red'}:{'color':'pink'}">favorite</mat-icon>
+           <button mat-raised-button color="primary" [disabled]="!title.value" (click)="takeNotes()">Done</button>
+        </mat-card-actions>      
+    </div> 
+  </mat-expansion-panel>
+</div>

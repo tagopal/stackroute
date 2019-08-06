@@ -1,0 +1,34 @@
+.loginCard{
+    width:25%;
+    margin: 5% auto;
+}
+mat-card-title{
+    display: inline-block
+}
+mat-card-header mat-error{
+    margin-top: 0.2em;
+}
+.forms-group{
+    display: flex;
+    flex-direction: column;
+}
+
+#progress-bar{
+    margin-top: 1em;
+}
+
+
+@media only screen and (min-width: 360px) and (max-width: 767px){
+    .loginCard{
+        width:auto;
+        margin: 1% auto;
+    }
+}
+    
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .loginCard{
+        width:50%;
+        margin: 5% auto;
+    }
+}
+    

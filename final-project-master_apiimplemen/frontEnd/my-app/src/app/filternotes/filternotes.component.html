@@ -1,0 +1,20 @@
+
+<mat-action-list>
+  <button mat-list-item *ngFor="let link of links; let index=index" (click)="activeClick(index)" [ngClass]="index==activeIndex[0] ? 'active-class' : ''"> 
+    <mat-icon [ngStyle]="{'margin-right': '1em'}"[ngClass]="index==activeIndex[0] ? 'icon-active' : ''">{{faces[index]}}</mat-icon>
+    <!--<i [ngStyle]="{'margin-right': '1em'}" matBadge="15" class="material-icons md-dark">{{faces[index]}}</i>-->
+    {{link}} </button>
+    <!--<button mat-list-item (click)="activeClick(3)" [ngClass]="3==activeIndex[0] ? 'active-class' : ''"> 
+    <mat-icon  matBadge="15" [ngStyle]="{'margin-right': '1em'}">notifications</mat-icon>
+    Reminders </button>-->
+</mat-action-list>
+<mat-divider [ngStyle]="{'margin-top':'0.2em'}"></mat-divider>
+
+<!--<mat-action-list>
+  <h3 mat-subheader>Label</h3>
+  <mat-list-item *ngFor="let item of userLabels;index as i" [ngClass]="i==activeIndex[1] ? 'active-class' : ''" (click)="eachLabel(i)">
+    <mat-icon mat-list-icon [ngClass]="i==activeIndex[1] ? 'icon-active' : ''">label</mat-icon>
+    <p mat-line> {{item}}</p>
+  </mat-list-item>
+  <mat-divider [ngStyle]="{'margin-top':'0.2em'}"></mat-divider>
+</mat-action-list>-->

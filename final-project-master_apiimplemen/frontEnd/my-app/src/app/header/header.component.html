@@ -1,0 +1,85 @@
+<mat-toolbar color="primary" class ="container-fluid">
+  
+  <mat-toolbar-row class="row">
+    <div class="container-fluid">
+      <nav class="navbar navbar-toggleable-sm navbar-dark">                  
+            <mat-card-title class="mr-auto">Stackroute Keep Note</mat-card-title>
+            <div *ngIf="!loginDashState">
+              <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#myNavbar1">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-between"  id="myNavbar1">                  
+                <ul class="navbar-nav">
+                  <li class="nav-item"><button mat-button routerLink="/login">Login</button></li>
+                  <li class="nav-item"><button mat-button routerLink="/register">Register</button></li>
+                </ul>
+              </div>  
+            </div> 
+
+            <div *ngIf="loginDashState">
+                <mat-form-field >
+                  <mat-label>Title Search</mat-label>
+                  <input (click)="$event.stopPropagation()" (keyup)="SearchTitle()" [(ngModel)]="titleTerm" matInput placeholder="" [formControl]="myControl">
+                  <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+                <button mat-button (click)="logOut()">Logout</button>
+            </div>        
+      </nav> 
+    </div>        
+  </mat-toolbar-row>
+  
+  <mat-toolbar-row class="col-12" *ngIf="editHeader.length>0" [@slideInOut]>
+    <button mat-icon-button>
+      <mat-icon aria-label="clear all" (click)="unSelectAll()">clear</mat-icon>
+    </button>
+    <span>{{editHeader.length+" Selected"}}</span>
+
+    <mat-icon class="example-icon" [ngStyle]="{'cursor':'pointer'}" aria-hidden="false" aria-label="Example user verified icon" [matMenuTriggerFor]="beforeMenu">more_vert</mat-icon>
+
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button  mat-menu-item (click)="deleteSelected()">
+          <mat-icon #deletetrash aria-label="deleteselected">delete</mat-icon>      
+          Trash
+      </button>
+      <button  mat-menu-item [matMenuTriggerFor]="changelabel">
+          <mat-icon aria-label="change label">label</mat-icon>      
+          change label
+      </button>
+      <button  mat-menu-item>
+        <mat-checkbox  (click)="$event.stopPropagation()" (change)="headerfavourite()" [(ngModel)]="favHeader" [indeterminate]="favHeaderIN">
+          Favourite
+        </mat-checkbox>
+      </button>
+    </mat-menu>
+    <!--sub mat menu-->
+    
+    <mat-menu #changelabel="matMenu">
+      <span [ngStyle]="{'margin':'1em'}">
+        <mat-form-field >
+          <mat-label>Label Search</mat-label>
+          <input (click)="$event.stopPropagation()" [(ngModel)]="labelTerm" matInput placeholder="" [formControl]="myControl">
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+         <div *ngIf="(labelHeader | filter: labelTerm).length === 0">
+          <mat-card-header>
+            <mat-card-title>{{labelTerm}}</mat-card-title>
+            <button [ngStyle]="{'margin-left':'auto'}" (click)="$event.stopPropagation()" mat-button matSuffix mat-icon-button aria-label="add" (click)="addNewLabel(labelTerm)">          
+              <mat-icon matSuffix>add</mat-icon>
+            </button>
+          </mat-card-header>
+        </div>
+        <!--do below after-->
+        <!--[indeterminate]="indeterminate[i]"-->
+        <!--<span *ngIf="editHeader.length>0">-->
+          <!--[(ngModel)]="this.editHeader[i].labels"-->
+          <mat-checkbox id="label_check+{{i}}" class="mat-menu-item" (change)="onUpdate(i)" [(ngModel)]="checkValue[i]" [indeterminate]="indeterminate[i]" *ngFor="let item of labelHeader; index as i" (click)="$event.stopPropagation()">{{item}}</mat-checkbox>
+        <!--</span>-->
+        <button mat-menu-item (click)="unSelectAll()">
+          <mat-icon>save</mat-icon>save
+        </button>        
+      </span>      
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+

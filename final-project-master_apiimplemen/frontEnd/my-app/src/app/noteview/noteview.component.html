@@ -1,0 +1,97 @@
+<mat-error *ngIf="!dataNotes && !isNotesSharedMe">
+  {{"Create note to list"}}
+</mat-error>
+<mat-error *ngIf="!notesSharedMe && isNotesSharedMe">
+  {{"No Shared note to list"}}
+</mat-error>
+<div class="notes-card" *ngIf="!isNotesSharedMe">
+  <mat-card
+    [ngStyle]="{'position':'relative','justify-content':'space-between','display':'flex','flex-direction':'column'}"
+    class="each-card" [class.box-shadows]="multipleSelect[i]"
+    *ngFor="let note of dataNotes | filter:favorite;let i = index;">
+    <i class="material-icons select_button" [ngClass]="{selected:multipleSelect[i]}"
+       (click)="multiSelect(i)">check_box</i>
+    <mat-list>
+      <mat-list-item>
+        <h3 mat-line>{{note.title}}</h3>
+        <mat-icon [ngStyle]="{'cursor':'pointer'}" (click)="openDialog(i)">edit</mat-icon>
+      </mat-list-item>
+      <mat-card-subtitle>{{note.text}}</mat-card-subtitle>
+    </mat-list>
+
+    <mat-chip-list [ngStyle]="{'margin': '.5em 0'}">
+      <mat-chip matTooltip="label" [matTooltipPosition]="'above'" *ngFor="let label of note.labels"
+        [selectable]="selectable" [removable]="removable" (removed)="remove(label,i)">
+        {{label}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+
+    <mat-card-actions class="mat-card-action-notes">
+      <span [ngStyle]="{'cursor':'pointer'}">
+        <mat-icon matTooltip="Share to" matTooltipClass="tooltipColor" (click)="activenote(i)"
+          [matMenuTriggerFor]="sharing" [matMenuTriggerData]="{index: i}">person_add</mat-icon>
+        <mat-icon matTooltip="favourite" (click)="favourite(i)"
+          [ngStyle]="note.favourite==true ? {'color':'red'} : {'color':'pink'}">favorite</mat-icon>
+      </span>
+      <p id="edited"> Edited: {{note.created | date:'medium'}}</p>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<div class="notes-card" *ngIf="isNotesSharedMe">
+  <mat-card
+    [ngStyle]="{'position':'relative','justify-content':'space-between','display':'flex','flex-direction':'column'}"
+    class="each-card" [class.box-shadows]="multipleSelect[i]"
+    *ngFor="let note of notesSharedMe;let i = index;">
+    <i class="material-icons select_button" [ngClass]="{selected:multipleSelect[i]}"
+       (click)="multiSelect(i)">check_box</i>
+    <mat-list>
+      <mat-list-item>
+        <h3 mat-line>{{note.title}}</h3>
+        <mat-icon [ngStyle]="{'cursor':'pointer'}" (click)="openDialog(i)">edit</mat-icon>
+      </mat-list-item>
+      <mat-card-subtitle>{{note.text}}</mat-card-subtitle>
+    </mat-list>
+
+    <mat-chip-list [ngStyle]="{'margin': '.5em 0'}">
+      <mat-chip matTooltip="label" [matTooltipPosition]="'above'" *ngFor="let label of note.labels"
+        [selectable]="selectable" [removable]="removable" (removed)="remove(label,i)">
+        {{label}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+
+    <mat-card-actions class="mat-card-action-notes">
+      <span [ngStyle]="{'cursor':'pointer'}">
+        <mat-icon matTooltip="Share to" matTooltipClass="tooltipColor" (click)="activenote(i)"
+          [matMenuTriggerFor]="sharing" [matMenuTriggerData]="{index: i}">person_add</mat-icon>
+        <mat-icon matTooltip="favourite" (click)="favourite(i)"
+          [ngStyle]="note.favourite==true ? {'color':'red'} : {'color':'pink'}">favorite</mat-icon>
+      </span>
+      <p id="edited"> Edited: {{note.created | date:'medium'}}</p>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!--sharing picker-->
+<mat-menu #sharing="matMenu">
+  <button mat-menu-item>
+    <mat-form-field (click)="$event.stopPropagation()">
+      <mat-icon matSuffix>person_add</mat-icon>
+      <input matInput [(ngModel)]="term" placeholder="Share with" (click)="value=''">
+    </mat-form-field>
+  </button>
+  <div *ngIf="(typesOfShoes | filter: term).length === 0">
+    <mat-card-header>
+      <mat-card-title>{{term}}</mat-card-title>
+      <mat-card-subtitle>No user found with this name</mat-card-subtitle>
+    </mat-card-header>
+  </div>
+  <div [ngStyle]="{'margin-left':'0.3em'}" (click)="$event.stopPropagation()">
+    <mat-checkbox *ngFor="let shoe of typesOfShoes | filter: term ;let index=index" id="label_check+{{index}}"  
+      class="mat-menu-item"  (change)="onUpdate(index)" [(ngModel)]="friendNotesCheck[index]"
+        (click)="$event.stopPropagation()">{{shoe.userName}}</mat-checkbox>
+  </div>
+  <span [ngStyle]="{'margin-left':'1.2em'}">
+    <button mat-raised-button color="accent" (click)="share(note)">Save</button>
+  </span>
+</mat-menu>

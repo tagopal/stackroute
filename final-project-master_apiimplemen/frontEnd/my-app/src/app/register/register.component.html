@@ -1,0 +1,26 @@
+<div class="registerCard">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+      <mat-error *ngIf="errMessage">{{errMessage}}</mat-error>
+    </mat-card-header>
+    <div class="forms-group">
+      <mat-form-field>
+        <input matInput placeholder="firstname" [formControl]='firstname' [errorStateMatcher]="matcher" (mouseup)="onKey()" (keyup)="onKey()" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="lastname" [formControl]='lastname' [errorStateMatcher]="matcher" (mouseup)="onKey()" (keyup)="onKey()" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Username" [formControl]='username'[errorStateMatcher]="matcher" (mouseup)="onKey()" (keyup)="onKey()" autocomplete="off">
+      </mat-form-field>
+      <mat-form-field>
+      <input matInput placeholder="Enter your password" [formControl]='password' [type]="hide ? 'password' : 'text'" (mouseup)="onKey()" (keyup)="onKey()" autocomplete="off">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+    </mat-form-field>
+    <button mat-raised-button  color="primary" (click)="register()">Register</button>
+    </div>
+    <mat-progress-bar id="progress-bar" mode="indeterminate" [style.display]="showSpinner ? 'block' : 'none'"></mat-progress-bar>
+  </mat-card>
+</div>

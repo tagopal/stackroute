@@ -1,0 +1,9 @@
+.keep-comp-expansion-panel{
+    width:90%;
+    margin:auto;
+}
+
+.forms-group{
+    display: flex;
+    flex-direction: column;
+}

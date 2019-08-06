@@ -1,0 +1,169 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Application to have notes to perform",
+      "version": "1.0.0",
+      "title": "StackRoute Keep Note"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1/",
+    "tags": [
+      {
+        "name": "Login/Register",
+        "description": "Register new user / Login with credential user"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "securityDefinitions": {
+      
+    },
+    "paths": {      
+      "/login": {
+        "post": {
+          "tags": [
+            "Login"
+          ],
+          "summary": "Login user",
+          "description": "Login user",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Login Credential",
+              "in": "body",
+              "required": true,
+              "description": "A JSON object containing Login information",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  },
+                  "data":{
+                    "type": "object"
+                  },
+                  "token":{
+                    "type":"string"
+                  }
+                }
+              },
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied, password mismatch",
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
+        }
+      },
+      "/register": {
+        "post": {
+          "tags": [
+            "Register"
+          ],
+          "summary": "Register user",
+          "description": "Register user",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Register New user",
+              "in": "body",
+              "required": true,
+              "description": "A JSON object containing Login information",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "firstname": {
+                    "type": "string"
+                  },
+                  "lastname": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              },
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Existing user,Provide valid details",
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            },
+            "500":{
+              "description": "Internal server error"
+            }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
+        }
+      }
+    }
+  }
