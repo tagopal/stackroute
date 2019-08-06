@@ -1,0 +1,38 @@
+.side_panel_container{
+    width: 300px;
+}
+
+.option{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.option:hover{
+    background: grey;
+    cursor: pointer;
+}
+
+.title{
+    padding: 15px;
+}
+
+.option_set{
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.label_icon{
+
+}
+
+.option_text{
+    padding-left: 10px;
+}
+
+.option_selected{
+    background: #e8d846 !important;
+}
+
+.delete_icon{
+    cursor: pointer;
+}

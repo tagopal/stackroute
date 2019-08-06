@@ -1,0 +1,16 @@
+<div class="side_panel_container">
+    <div class="option_set">
+        <div class="option" [ngClass]="{option_selected : favViewActive=='note'}" (click)="notesView()">Notes</div>
+        <div class="option" [ngClass]="{option_selected : favViewActive=='fav'}" (click)="favView()">Favorites</div>
+        <div class="option" [ngClass]="{option_selected : favViewActive=='share'}" (click)="shareView()">Shared Notes</div>
+        <!-- <div class="option">Reminders</div> -->
+    </div>
+    <div class="label_container option_set">
+        <div class="title">Labels</div>
+        <div class="option" [ngClass]="{option_selected : currLabel==item.name}" *ngFor="let item of labelList,index as i" (click)="labelView(i)">
+                <mat-icon class="label_icon">label_outlined</mat-icon> 
+                <div class="option_text">{{item.name}}</div>
+                <mat-icon class="delete_icon" (click)="removeLabel(i)">delete_forever</mat-icon>
+        </div>
+    </div>
+</div>

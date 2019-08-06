@@ -1,0 +1,272 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Application similar to Google Keep",
+      "version": "1.0.0",
+      "title": "Keep"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1/",
+    "tags": [
+      {
+        "name": "Notes",
+        "description": "Get,Post,Update and Delete the notes"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "securityDefinitions": {
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "paths": {
+        "/notes?userId={userId}": {
+            "get": {
+              "tags": [
+                "Get note "
+              ],
+              "summary": "Get notes",
+              "description": "Get all notes for id",
+              "consumes": [
+                "application/json"
+              ],
+              "parameters": [
+                {
+                  "name": "userId",
+                  "in": "query",
+                  "required": true,
+                  "description": "which is id for getting notes",
+                  "schema": {
+                    "type": "string",
+                    "properties": {                 
+                    }
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "successful operation",
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "headers": {
+                    "Access-Control-Allow-Origin": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "400": {
+                  "description": "provide valid id",
+                  "headers": {
+                    "Access-Control-Allow-Origin": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "404": {
+                  "description": "Not found"
+                },
+                "500":{
+                  "description": "Internal server error"
+                }
+              },
+              "security": [
+                {
+                  "Bearer": []
+                }
+              ]
+            }
+          },
+      "/users/register": {
+        "get": {
+          "tags": [
+            "register"
+          ],
+          "summary": "Register User to service",
+          "description": "Register User to service",
+          "operationId": "registerUser",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                        "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Please enter the user Id",
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "500": {
+              "description": "unexpected error"
+            }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
+        }
+      },
+      "/users/login": {
+        "post": {
+          "tags": [
+            "Login"
+          ],
+          "summary": "Login user",
+          "description": "Login user",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "User Details",
+              "in": "body",
+              "required": true,
+              "description": "A JSON object containing Login information",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              },
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid ID supplied,",
+              "headers": {
+                "Access-Control-Allow-Origin": {
+                  "type": "string"
+                }
+              }
+            },
+            "404": {
+              "description": "Error in note posted"
+            }
+          },
+          "security": [
+            {
+              "Bearer": []
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+        "schemas": {
+          "Notes": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "favorite": {
+                "type": "boolean"
+              },
+              "userId": {
+                "type": "string"
+              },
+              "sharedTo": {
+                "type": "string"
+              },
+              "createdOn": {
+                "type": "string"
+              },
+              "modifiedOn": {
+                "type": "string"
+              },
+              "remainderOn": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+          }
+        },
+        "responses": {
+          "UnauthorizedError": {
+            "description": "Access token is missing or invalid"
+          }
+        }
+      }
+    
+  }

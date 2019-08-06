@@ -1,0 +1,63 @@
+<div class="header_whole_container">
+    <mat-toolbar class="header_container" color="primary">
+            <div>Keep</div>
+            <!-- {{router.url}} -->
+            <form *ngIf="route!='/login'" (submit)="searchNotes()" class="header_search_container" action="#">
+                <mat-form-field class="header_search">
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="" [formControl]="noteSearch" autocomplete="off" (change)="searchNotes()">
+                    <mat-icon matSuffix class="search_icon" (click)="searchNotes()">search</mat-icon>
+                </mat-form-field>
+            </form>
+            <div *ngIf="route!='/login'" class="keep-c-toggle-view">
+                <!-- <button (click)="share()">share</button> -->
+                <i *ngIf="isNoteView" class="material-icons switchToListView" (click)="routeSet('list')">view_list</i>
+                <i *ngIf="!isNoteView" class="material-icons switchToNoteView" (click)="routeSet('note')">view_quilt</i>
+            </div>
+            <div class="sign_out_button" (click)="signOut()">Sign Out</div>
+    </mat-toolbar>
+    <div class="overlay_container" *ngIf="selectedNoteId.length" [ngClass]="{overlay_enable:selectedNoteId.length}">
+        <div class="left_section">
+        <i class="material-icons close_icon" (click)="closeHeader()">close</i>
+            <div>{{selectedNoteId.length}} Selected</div>
+            <!-- {{selectedLabels | json}}
+            {{indeterminate}} -->
+        </div>
+        <div class="right_section">
+            <mat-menu class="labelMenu" #appMenu="matMenu" (click)="$event.stopPropagation()">
+                <mat-form-field appearance="legacy" (click)="$event.stopPropagation()">
+                    <mat-label>Label Search</mat-label>
+                    <input matInput placeholder="" [formControl]="myControl">
+                    <mat-icon matSuffix>search</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+                <mat-checkbox id="label_check+{{i}}" [indeterminate]="indeterminate[i]" class="mat-menu-item" (change)="checkBoxChange($event,i,item.name)" [(ngModel)]="selectedLabels[i]" *ngFor="let item of filteredOptions | async; index as i" (click)="$event.stopPropagation()">{{item.name}}</mat-checkbox>
+                <div class="mat-menu-item" *ngIf="(filteredOptions | async)?.length==0" (click)="addNewLabel()">
+                    <div class="add_new_label">
+                        <i class="material-icons">add</i>
+                        <div>{{myControl.value}}</div>
+                    </div>
+                </div>
+                <!-- <div class="mat-menu-item" (click)="submit()">submit</div> -->
+            </mat-menu>
+            <mat-menu #LabelSelect="matMenu">
+                
+            </mat-menu>
+            <!-- <i class="material-icons">
+                add_alert
+                </i> -->
+            <i class="material-icons favorite_icon" [ngClass]="{fav_enable:favorite==true,fav_disable:favorite==false}" (click)="favoriteToggle()">
+                    favorite
+            </i>
+            <i class="material-icons delete_icon" [ngClass]="{}" (click)="deleteNotes()">
+                    delete_forever
+            </i>
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                <mat-icon>label_outlined</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="placeholder">
+
+</div>

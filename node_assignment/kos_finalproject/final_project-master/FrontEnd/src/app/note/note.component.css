@@ -1,0 +1,99 @@
+.keep-note-card{
+   margin-left:1em;
+   margin-top:1em;
+   position: relative;
+   min-width: 225px;
+}
+
+.select_button{
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    display: none;
+    /* height: 40px; */
+    font-size: 40px;
+}
+
+.keep-note-card:hover .note_card{
+    box-shadow: 0px 2px 21px #888888;
+}
+
+.keep-note-card:hover .select_button{
+    display: block;
+    cursor: pointer;
+}
+
+.selected{
+    display: block;
+    /* filter: invert(1) sepia(1) saturate(35) hue-rotate(221deg); */
+    /* filter: invert(1) sepia(1) saturate(84) hue-rotate(77deg); */
+    color: #09ac09;
+}
+
+.select_button svg path{
+    fill: green;
+}
+
+.note_options{
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.keep-note-card:hover>.note_card>.note_options{
+    opacity: 1;
+}
+
+.favorite_icon{
+    color: grey;
+    transition: color 0.5s;
+    cursor: pointer;
+}
+
+.fav_enable{
+    color: red;
+}
+
+.fav_disable{
+    opacity: 0;
+}
+
+.label_list_container{
+    display: flex;
+}
+
+.label_container{
+    padding: 5px 10px;
+    background: rgb(235, 235, 235);
+    margin: 2px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.close_icon{
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
+    color: darkgrey;
+}
+
+.label_container:hover .close_icon{
+    display: block;
+}
+
+.close_icon:hover{
+    color:rgb(0, 0, 0);
+}
+
+.label_text{
+    cursor: pointer;
+}
+
+.add_new_label{
+    display: flex;
+    align-items: center;
+}
+
+.share_icon{
+    cursor: pointer;
+}

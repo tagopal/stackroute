@@ -1,0 +1,7 @@
+.dashboard_container{
+    display: flex;
+}
+
+.main_panel{
+    width: 100%;
+}

@@ -1,0 +1,40 @@
+.login-container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    display: none;
+    min-width: 500px;
+    max-width: 50%;
+    margin: auto;
+}
+
+.login-container>*{
+    width: 50%;
+}
+.login_enable{
+    display: flex;
+}
+
+.register_container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    display: none;
+    min-width: 500px;
+    max-width: 50%;
+    margin: auto;
+}
+
+.register_container>*{
+    width: 50%;
+}
+
+.register_enable{
+    display: flex;
+}
+
+.register_button{
+    cursor: pointer;
+}

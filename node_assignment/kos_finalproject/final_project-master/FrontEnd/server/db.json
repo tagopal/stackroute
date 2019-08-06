@@ -1,0 +1,124 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Read Angular5 blog",
+      "text": "Shall do at 6 pm",
+      "state": "completed",
+      "favorite": false,
+      "labels": []
+    },
+    {
+      "id": 2,
+      "title": "Call Ravi",
+      "text": "Track the new submissions",
+      "state": "started",
+      "favorite": false,
+      "labels": []
+    },
+    {
+      "title": "Capitalism",
+      "text": "Mark Twain",
+      "id": 3,
+      "state": "completed",
+      "favorite": false,
+      "labels": []
+    },
+    {
+      "title": "new6chj",
+      "text": "new6",
+      "state": "not-started",
+      "id": 9,
+      "favorite": false,
+      "labels": []
+    },
+    {
+      "title": "new7sadasd",
+      "text": "new7",
+      "state": "not-started",
+      "id": 10,
+      "favorite": false,
+      "labels": []
+    },
+    {
+      "title": "works",
+      "text": "works",
+      "id": 11,
+      "favorite": false,
+      "labels": [
+        "one",
+        "two",
+        "three"
+      ]
+    },
+    {
+      "title": "new9",
+      "text": "new9",
+      "state": "not-started",
+      "id": 12,
+      "favorite": true,
+      "labels": [
+        "one",
+        "two"
+      ]
+    },
+    {
+      "title": "new10",
+      "text": "new10",
+      "state": "not-started",
+      "id": 13,
+      "favorite": true,
+      "labels": [
+        "one",
+        "two",
+        "three"
+      ]
+    },
+    {
+      "title": "new10",
+      "text": "new10",
+      "state": "not-started",
+      "id": 14,
+      "favorite": true,
+      "labels": [
+        "one",
+        "two"
+      ]
+    },
+    {
+      "title": "new10",
+      "text": "new10",
+      "state": "not-started",
+      "id": 15,
+      "favorite": true,
+      "labels": [
+        "one",
+        "two"
+      ]
+    },
+    {
+      "title": "new",
+      "text": "new",
+      "state": "not-started",
+      "favorite": false,
+      "labels": [],
+      "id": 16
+    },
+    {
+      "title": "11",
+      "text": "11",
+      "state": "started",
+      "favorite": false,
+      "labels": [],
+      "id": 17
+    },
+    {
+      "title": "2",
+      "text": "2",
+      "state": "not-started",
+      "favorite": false,
+      "labels": [],
+      "id": 18
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+.keep-comp-expansion-panel{
+    margin:auto;
+    width:50vw;
+}
+.keep-comp-forms{
+   display:flex;
+   flex-direction:column;
+}
+.keep-comp-button{
+    display:flex;
+    justify-content:flex-end;
+}
+.title{
+	background-color: white;
+}
+.text{
+	background-color: white;
+}

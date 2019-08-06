@@ -1,0 +1,36 @@
+{
+  "name": "keep",
+  "version": "1.0.0",
+  "description": "NodeJS app for authenticating using JWT Token",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./server/bin/www",
+    "test": "node_modules/.bin/mocha ./server/test/**/*.js",
+    "lint": "node_modules/.bin/eslint './server/**/*.js' --ignore-path .eslintignore"
+  },
+  "keywords": [
+    "node.js",
+    "express.js"
+  ],
+  "author": "StackRoute",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "~4.15.5",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.0.10",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "socket.io": "^2.2.0",
+    "swagger-ui-express": "^4.0.3",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^5.0.5",
+    "supertest": "^3.0.0",
+    "eslint": "^4.19.1"
+  }
+}

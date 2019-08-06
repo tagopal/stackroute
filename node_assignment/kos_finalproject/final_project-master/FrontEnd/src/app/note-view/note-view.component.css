@@ -1,0 +1,15 @@
+.keep-c-note-container{
+     display:flex;
+    flex-wrap:wrap;
+    padding:30px;
+    /* height: 80vh;
+    overflow: auto; */
+}
+.keep-c-note{
+    margin-left:10px;
+    margin-top:10px;
+}
+
+.note_view_container{
+    
+}
